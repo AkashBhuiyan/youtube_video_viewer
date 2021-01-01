@@ -15,11 +15,11 @@ def get_proxy():
     return {"https": choice(proxyList)}
 
 def get_driver_by_proxy(PROXY):
-    firefox_options = webdriver.ChromeOptions()
-    firefox_options.add_argument('--proxy-server=http://%s' % PROXY)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--proxy-server=http://%s' % PROXY)
 
-    firefox = webdriver.Chrome(chrome_options=firefox_options)
-    return firefox
+    chrome = webdriver.Chrome(chrome_options=chrome_options)
+    return chrome
 
 
 def button_click(driver):
@@ -45,15 +45,15 @@ if __name__ == '__main__':
     counter = int(input())
     while(counter >= 0):
         proxy = get_proxy()
-        firefox = get_driver_by_proxy(PROXY=proxy['https'])
+        chrome = get_driver_by_proxy(PROXY=proxy['https'])
         urlList = [
                     'https://www.whatismyip.com/',
                     'https://www.youtube.com/watch?v=2Vv-BfVoq4g',
                     'https://www.youtube.com/watch?v=EWdIElQUI_4']
-        watch_video(urlList=urlList, driver=firefox)
+        watch_video(urlList=urlList, driver=chrome)
         counter = counter - 1
 
-        firefox.quit()
+        chrome.quit()
 
 
 
